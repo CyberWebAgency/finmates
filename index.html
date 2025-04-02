@@ -3,884 +3,426 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Finamtes - Investment & Consulting</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#5270aa',
-                        'primary-dark': '#445d96',
-                        'primary-light': '#7b93c3',
-                        'primary-ultralight': '#e6ebf4',
-                        'primary-bg': '#f5f7fa',
-                        'metallic-green': '#34d399',
-                        'metallic-green-dark': '#059669',
-                        'surface': '#ffffff',
-                        'surface-dark': '#f8fafc'
-                    }
-                }
-            }
-        }
-    </script>
+    <title>FinMates - Financial Advisory Services</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-        
+        :root {
+            --primary-color: #5270aa;
+            --secondary-color: #3d3d3d;
+            --accent-color: #7b93c3;
+            --light-color: #e6ebf4;
+            --dark-color: #445d96;
+            --primary-bg: #f5f7fa;
+        }
         body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #e6ebf4 0%, #f5f7fa 100%);
+            font-family: 'Roboto', sans-serif;
+            color: var(--secondary-color);
         }
-
-        .animate-slide-up {
-            animation: slideUp 0.5s ease-out;
+        .top-bar {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 8px 0;
+            font-size: 14px;
         }
-
-        @keyframes slideUp {
-            from {
-                transform: translateY(20px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
+        .navbar {
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
         }
-
-        /* Add padding to account for fixed navbar */
-        .pt-safe {
-            padding-top: calc(6rem + env(safe-area-inset-top));
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 28px;
+            color: var(--primary-color);
         }
-
-        .bg-primary-gradient {
-            background: linear-gradient(to bottom, #b5cefa, #d4f6eb);
-        }
-
-        /* Mobile menu styles */
-        .mobile-menu {
-            transform: translateY(-100%);
-            transition: transform 0.3s ease-in-out;
-        }
-
-        .mobile-menu.active {
-            transform: translateY(0);
-        }
-
-        /* Slider styles */
-        .swiper-container {
-            width: 100%;
-            height: 100%;
-        }
-
-        .swiper-slide {
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-
-        .swiper-slide-active {
-            opacity: 1;
-        }
-
-        .slide-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
-        }
-
-        /* Custom Swiper Navigation Styles */
-        .swiper-button-next,
-        .swiper-button-prev {
-            background-color: rgba(255, 255, 255, 0.8);
-            padding: 2rem;
-            border-radius: 50%;
-            color: var(--primary);
-            transition: all 0.3s ease;
-        }
-
-        .swiper-button-next:after,
-        .swiper-button-prev:after {
-            font-size: 1.5rem;
-        }
-
-        @media (max-width: 768px) {
-            .swiper-button-next,
-            .swiper-button-prev {
-                padding: 1.5rem;
-                opacity: 0.6;
-            }
-
-            .swiper-button-next:after,
-            .swiper-button-prev:after {
-                font-size: 1rem;
-            }
-
-            .swiper-button-next {
-                right: 5px;
-            }
-
-            .swiper-button-prev {
-                left: 5px;
-            }
-        }
-
-        .swiper-button-next:hover,
-        .swiper-button-prev:hover {
-            opacity: 1;
-            background-color: rgba(255, 255, 255, 0.95);
-        }
-
-        @keyframes blob {
-            0% {
-                transform: translate(0px, 0px) scale(1);
-            }
-            33% {
-                transform: translate(30px, -50px) scale(1.1);
-            }
-            66% {
-                transform: translate(-20px, 20px) scale(0.9);
-            }
-            100% {
-                transform: translate(0px, 0px) scale(1);
-            }
-        }
-
-        .animate-blob {
-            animation: blob 7s infinite;
-        }
-
-        .animation-delay-2000 {
-            animation-delay: 2s;
-        }
-
-        .animation-delay-4000 {
-            animation-delay: 4s;
-        }
-
-        .glass-effect {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .metallic-gradient {
-            background: linear-gradient(135deg, #34d399 0%, #5270aa 100%);
-        }
-
-        .hover-metallic:hover {
-            background: linear-gradient(135deg, #059669 0%, #445d96 100%);
-            transform: translateY(-2px);
-        }
-
-        .section-gradient {
-            background: linear-gradient(135deg, rgba(82, 112, 170, 0.03) 0%, rgba(82, 112, 170, 0.08) 100%);
-        }
-
-        .card-hover {
-            transition: all 0.3s ease;
-        }
-
-        .card-hover:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-
-        .text-gradient {
-            background: linear-gradient(135deg, #5270aa 0%, #7b93c3 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
         .nav-link {
-            position: relative;
-            padding: 0.5rem 0;
+            font-weight: 500;
+            color: var(--secondary-color);
+            margin: 0 10px;
         }
-
-        .nav-link::after {
-            content: '';
+        .nav-link:hover {
+            color: var(--primary-color);
+        }
+        .hero-slider {
+            position: relative;
+            height: 600px;
+            overflow: hidden;
+        }
+        .hero-slide {
+            height: 600px;
+            background-size: cover;
+            background-position: center;
+            padding: 100px 0;
+            color: white;
+        }
+        .slide-1 {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1579532536935-619928decd08');
+            background-size: cover;
+        }
+        .slide-2 {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1579621970795-87facc2f976d');
+            background-size: cover;
+        }
+        .hero-content h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        .hero-content p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            padding: 12px 30px;
+            font-weight: 600;
+        }
+        .btn-primary:hover {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+        }
+        .section-title {
+            margin-bottom: 50px;
+        }
+        .section-title h2 {
+            font-size: 36px;
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+        .section-title h2:after {
+            content: "";
             position: absolute;
             bottom: 0;
             left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(135deg, #5270aa 0%, #7b93c3 100%);
-            transition: width 0.3s ease;
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary-color);
         }
-
-        .nav-link:hover::after {
-            width: 100%;
+        .section-padding {
+            padding: 80px 0;
         }
-
-        .input-focus {
+        .about-img img {
+            border-radius: 5px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        .feature-box {
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
             transition: all 0.3s ease;
         }
-
-        .input-focus:focus {
-            transform: translateY(-1px);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        .feature-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
         }
-
-        .floating-label {
-            transform: translateY(-1.5rem) scale(0.85);
-            color: #5270aa;
+        .feature-icon {
+            font-size: 36px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
         }
-
-        .primary-shadow {
-            box-shadow: 0 4px 14px -1px rgba(82, 112, 170, 0.2);
+        .contact-form {
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+        }
+        .footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        .footer-contact li {
+            margin-bottom: 15px;
+        }
+        .footer-contact i {
+            margin-right: 10px;
+            color: var(--accent-color);
+        }
+        .copyright {
+            padding: 20px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 40px;
         }
     </style>
 </head>
-<body class="bg-primary-bg">
-    <!-- Navigation -->
-    <nav class="fixed w-full bg-white/95 backdrop-blur-md shadow-md z-50">
-        <div class="container mx-auto px-6 py-4">
-            <div class="flex items-center justify-between">
-                <div class="text-2xl font-bold text-primary">
-                    <img src="images/logo.png" alt="Finamtes" class="w-24 h-24 object-cover hover:scale-105 transition-transform">
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <i class="fas fa-envelope"></i> info@finmates.com
+                    <i class="fas fa-phone ms-3"></i> +1 234 567 8901
                 </div>
-                <div class="hidden md:flex space-x-8">
-                    <a href="index.html" class="nav-link text-gray-700 hover:text-primary transition-colors">Home</a>
-                    <a href="about.html" class="nav-link text-gray-700 hover:text-primary transition-colors">About</a>
-                    <a href="services.html" class="nav-link text-gray-700 hover:text-primary transition-colors">Services</a>
-                    <a href="blog.html" class="nav-link text-gray-700 hover:text-primary transition-colors">Blog</a>
-                    <a href="tools.html" class="nav-link text-gray-700 hover:text-primary transition-colors">Tools</a>
-                    <a href="contact.html" class="nav-link text-gray-700 hover:text-primary transition-colors">Contact</a>
+                <div class="col-md-6 text-end">
+                    <i class="fab fa-facebook-f"></i>
+                    <i class="fab fa-twitter ms-2"></i>
+                    <i class="fab fa-linkedin-in ms-2"></i>
+                    <i class="fab fa-instagram ms-2"></i>
                 </div>
-                <button id="menuButton" class="inline-flex items-center justify-center px-6 py-2 text-sm font-medium text-white metallic-gradient hover-metallic transition-all duration-300 rounded-lg md:hidden">
-                    Menu
-                    <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-                    </svg>
-                </button>
             </div>
         </div>
-        <!-- Mobile Menu -->
-        <div class="mobile-menu fixed top-0 left-0 w-full h-screen bg-white md:hidden transform -translate-y-full transition-transform duration-300 ease-in-out">
-            <div class="container mx-auto px-6 py-20">
-                <div class="flex flex-col space-y-6 text-center">
-                    <a href="index.html" class="text-xl text-gray-700 hover:text-primary transition-colors">Home</a>
-                    <a href="about.html" class="text-xl text-gray-700 hover:text-primary transition-colors">About</a>
-                    <a href="services.html" class="text-xl text-gray-700 hover:text-primary transition-colors">Services</a>
-                    <a href="contact.html" class="text-xl text-gray-700 hover:text-primary transition-colors">Contact</a>
-                </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">FinMates</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">HOME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">ABOUT</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="services.html">SERVICE</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="blog.html">BLOG</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">CONTACT</a>
+                    </li>
+                </ul>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="relative pt-40 min-h-screen overflow-hidden bg-gradient-to-br from-primary-dark via-primary to-primary-light">
-        <!-- Background Pattern -->
-        <div class="absolute inset-0 opacity-10">
-            <div class="absolute inset-0" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.4\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
-        </div>
-
-        <div class="container mx-auto px-6 relative z-10">
-            <div class="flex flex-col md:flex-row items-center justify-between min-h-screen py-20 gap-16">
-                <!-- Text Content with Swiper -->
-                <div class="w-full md:w-1/2 text-white">
-                    <div class="swiper-container hero-swiper">
-                        <div class="swiper-wrapper">
-                            <!-- Slide 1 -->
-                            <div class="swiper-slide">
-                                <div data-aos="fade-right">
-                                    <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-                                        Smart Investing,
-                                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">Secure Future</span>
-                                    </h1>
-                                    <p class="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed">
-                                        Unlock your financial potential with our seasoned investment professionals. Through data-driven portfolio strategies, risk-optimized asset allocation, and proactive wealth management, we ensure steady growth, capital preservation, and financial security—empowering you to achieve long-term prosperity with confidence.
-                                    </p>
-                                </div>
-                            </div>
-                            <!-- Slide 2 -->
-                            <div class="swiper-slide">
-                                <div data-aos="fade-right">
-                                    <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-                                        Simple Steps to
-                                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">Financial Freedom</span>
-                                    </h1>
-                                    <p class="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed">
-                                        We begin with a deep understanding of your financial aspirations, then design customized investment strategies aligned with your goals. With continuous portfolio monitoring and strategic adjustments, we ensure sustained growth and financial stability.
-                                    </p>
-                                </div>
+    <!-- Hero Slider -->
+    <div id="heroSlider" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <!-- Slide 1 -->
+            <div class="carousel-item active">
+                <div class="hero-slide slide-1">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-7 hero-content">
+                                <h1>Smart Investing, Secure Future</h1>
+                                <p>Unlock your financial potential with our seasoned investment professionals. Through data-driven portfolio strategies, risk-optimized asset allocation, and proactive wealth management, we ensure steady growth, capital preservation, and financial security—empowering you to achieve long-term prosperity with confidence.</p>
+                                <a href="#contact" class="btn btn-primary">Start Investing</a>
                             </div>
                         </div>
                     </div>
-
-                    <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="contact.html" class="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white metallic-gradient hover-metallic transition-all duration-300 rounded-lg">
-                            Get Started
-                            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                            </svg>
-                        </a>
-                        <a href="about.html" class="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white border-2 border-white hover:bg-white hover:text-primary transition-colors duration-300 rounded-lg">
-                            Learn More
-                        </a>
-                    </div>
-
-                    <!-- Stats -->
-                    <!-- <div class="grid grid-cols-3 gap-8 mt-16">
-                        <div class="text-center">
-                            <h3 class="text-4xl font-bold mb-2">10+</h3>
-                            <p class="text-gray-300">Years Experience</p>
-                        </div>
-                        <div class="text-center">
-                            <h3 class="text-4xl font-bold mb-2">1000+</h3>
-                            <p class="text-gray-300">Happy Clients</p>
-                        </div>
-                        <div class="text-center">
-                            <h3 class="text-4xl font-bold mb-2">95%</h3>
-                            <p class="text-gray-300">Success Rate</p>
-                        </div>
-                    </div> -->
                 </div>
-
-                <!-- Image/Animation -->
-                <div class="w-full md:w-1/2 mt-12 md:mt-0" data-aos="fade-left">
-                    <div class="relative">
-                        <!-- Main Image -->
-                        <img src="images/b2.png" alt="Financial Growth" class="w-full h-auto relative z-10">
-                        
-                        <!-- Floating Elements -->
-                        <div class="absolute top-0 right-0 w-32 h-32 bg-blue-400 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
-                        <div class="absolute top-0 right-0 w-32 h-32 bg-primary rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
-                        <div class="absolute -bottom-4 left-20 w-32 h-32 bg-emerald-400 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
-                        
-                        <!-- Feature Cards -->
-                        <div class="absolute -top-6 -left-6 bg-white p-4 rounded-lg shadow-xl primary-shadow card-hover" data-aos="fade-down" data-aos-delay="300">
-                            <div class="flex items-center space-x-3">
-                                <div class="w-10 h-10 bg-emerald-100 rounded-full flex items-center justify-center">
-                                    <svg class="w-6 h-6 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <p class="text-sm font-semibold text-gray-900">Investment Growth</p>
-                                    <p class="text-xs text-emerald-500">+25% This Year</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="absolute -bottom-6 -right-6 bg-white p-4 rounded-lg shadow-xl primary-shadow card-hover" data-aos="fade-up" data-aos-delay="600">
-                            <div class="flex items-center space-x-3">
-                                <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
-                                    <svg class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <p class="text-sm font-semibold text-gray-900">Managed Assets</p>
-                                    <p class="text-xs text-blue-500">$500M+</p>
-                                </div>
+            </div>
+            <!-- Slide 2 -->
+            <div class="carousel-item">
+                <div class="hero-slide slide-2">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-7 hero-content">
+                                <h1>Simple Steps to Financial Freedom</h1>
+                                <p>We begin with a deep understanding of your financial aspirations, then design customized investment strategies aligned with your goals. With continuous portfolio monitoring and strategic adjustments, we ensure sustained growth and financial stability.</p>
+                                <a href="#contact" class="btn btn-primary">Start Investing</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-        <!-- Wave Shape Divider -->
-        <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
-            <svg class="relative block w-full h-24" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="fill-gray-50"></path>
-            </svg>
-        </div>
-    </section>
+        <button class="carousel-control-prev" type="button" data-bs-target="#heroSlider" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#heroSlider" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
 
     <!-- About Section -->
-    <section id="about" class="py-16 section-gradient">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-12">
-                <p class="text-gray-600 mb-6 text-lg">About Us</p>
-                <h2 class="text-3xl md:text-4xl font-bold">Leading Financial Advisor</h2>
-            </div>
-            <div class="flex flex-col md:flex-row items-center gap-12">
-                <div class="md:w-1/2" data-aos="fade-right">
-                    <p class="text-gray-600 mb-6 text-lg">
-                        At FinMates, we are committed to empowering individuals, families, and businesses to achieve financial success and long-term security. With years of expertise in financial planning and investment management, our team of certified advisors delivers personalized, transparent, and results-driven financial solutions tailored to your unique needs.
-                    </p>
-                    <a href="about.html" class="inline-flex items-center text-primary hover:text-primary-dark">
-                        Read More 
-                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                        </svg>
-                    </a>
+    <section id="about" class="section-padding">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <img src="https://img.freepik.com/free-photo/businessman-black-suit-holding-his-tasklist-makes-thumb-up_114579-15902.jpg?t=st=1743571693~exp=1743575293~hmac=0c9a7ddfccc09ac45e17ea7be07e0802c4c1267d331d3db1a913b1109953f072&w=2000" alt="Financial Advisor" class="img-fluid rounded">
                 </div>
-                <div class="md:w-1/2" data-aos="fade-left">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="bg-white p-6 rounded-lg shadow-lg primary-shadow card-hover">
-                            <div class="text-primary mb-4">
-                                <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
-                                </svg>
-                            </div>
-                            <h3 class="text-xl font-semibold mb-2">Portfolio Health Check</h3>
-                            <p class="text-gray-600">Share your CAS and receive customised analysis check in minutes</p>
-                        </div>
-                        <div class="bg-white p-6 rounded-lg shadow-lg primary-shadow card-hover">
-                            <div class="text-primary mb-4">
-                                <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                                </svg>
-                            </div>
-                            <h3 class="text-xl font-semibold mb-2">Tailored Wealth Advisory</h3>
-                            <p class="text-gray-600">Get customized investment advisory and financial plan</p>
-                        </div>
+                <div class="col-lg-6">
+                    <div class="section-title">
+                        <h2>Leading Financial Advisor</h2>
                     </div>
+                    <p>At FinMates, we are committed to empowering individuals, families, and businesses to achieve financial success and long-term security. With years of expertise in financial planning and investment management, our team of certified advisors delivers personalized, transparent, and results-driven financial solutions tailored to your unique needs.</p>
+                    <a href="about.html" class="btn btn-outline-primary mt-3">Read More <i class="fas fa-arrow-right ms-2"></i></a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="services" class="py-16 bg-white">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Our Services</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto">Comprehensive financial solutions tailored to your unique needs and goals. Our expert team provides personalized services to help you achieve financial success.</p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Financial Planning Service -->
-                <div class="bg-white p-8 rounded-lg shadow-lg primary-shadow card-hover transition-all duration-300" data-aos="fade-up">
-                    <div class="text-primary mb-6">
-                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-4">Financial Planning</h3>
-                    <ul class="space-y-3 text-gray-600">
-                        <li class="flex items-center">
-                            <svg class="w-5 h-5 mr-2 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            Comprehensive Financial Analysis
-                        </li>
-                        <li class="flex items-center">
-                            <svg class="w-5 h-5 mr-2 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            Goal-Based Planning
-                        </li>
-                        <li class="flex items-center">
-                            <svg class="w-5 h-5 mr-2 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            Retirement Planning
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Investment Management Service -->
-                <div class="bg-white p-8 rounded-lg shadow-lg primary-shadow card-hover transition-all duration-300" data-aos="fade-up" data-aos-delay="100">
-                    <div class="text-primary mb-6">
-                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-4">Investment Management</h3>
-                    <ul class="space-y-3 text-gray-600">
-                        <li class="flex items-center">
-                            <svg class="w-5 h-5 mr-2 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            Portfolio Management
-                        </li>
-                        <li class="flex items-center">
-                            <svg class="w-5 h-5 mr-2 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            Asset Allocation
-                        </li>
-                        <li class="flex items-center">
-                            <svg class="w-5 h-5 mr-2 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            Risk Management
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Wealth Advisory Service -->
-                <div class="bg-white p-8 rounded-lg shadow-lg primary-shadow card-hover transition-all duration-300" data-aos="fade-up" data-aos-delay="200">
-                    <div class="text-primary mb-6">
-                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-4">Wealth Advisory</h3>
-                    <ul class="space-y-3 text-gray-600">
-                        <li class="flex items-center">
-                            <svg class="w-5 h-5 mr-2 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            Estate Planning
-                        </li>
-                        <li class="flex items-center">
-                            <svg class="w-5 h-5 mr-2 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            Tax Planning
-                        </li>
-                        <li class="flex items-center">
-                            <svg class="w-5 h-5 mr-2 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            Succession Planning
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Insurance Planning Service -->
-                <div class="bg-white p-8 rounded-lg shadow-lg primary-shadow card-hover transition-all duration-300" data-aos="fade-up" data-aos-delay="300">
-                    <div class="text-primary mb-6">
-                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-4">Insurance Planning</h3>
-                    <ul class="space-y-3 text-gray-600">
-                        <li class="flex items-center">
-                            <svg class="w-5 h-5 mr-2 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            Life Insurance Solutions
-                        </li>
-                        <li class="flex items-center">
-                            <svg class="w-5 h-5 mr-2 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            Health Coverage
-                        </li>
-                        <li class="flex items-center">
-                            <svg class="w-5 h-5 mr-2 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            Asset Protection
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Corporate Advisory Service -->
-                <div class="bg-white p-8 rounded-lg shadow-lg primary-shadow card-hover transition-all duration-300" data-aos="fade-up" data-aos-delay="400">
-                    <div class="text-primary mb-6">
-                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-4">Corporate Advisory</h3>
-                    <ul class="space-y-3 text-gray-600">
-                        <li class="flex items-center">
-                            <svg class="w-5 h-5 mr-2 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            Business Valuation
-                        </li>
-                        <li class="flex items-center">
-                            <svg class="w-5 h-5 mr-2 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            Merger & Acquisition
-                        </li>
-                        <li class="flex items-center">
-                            <svg class="w-5 h-5 mr-2 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            Strategic Planning
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- International Investment Service -->
-                <div class="bg-white p-8 rounded-lg shadow-lg primary-shadow card-hover transition-all duration-300" data-aos="fade-up" data-aos-delay="500">
-                    <div class="text-primary mb-6">
-                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-4">International Investment</h3>
-                    <ul class="space-y-3 text-gray-600">
-                        <li class="flex items-center">
-                            <svg class="w-5 h-5 mr-2 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            Global Portfolio
-                        </li>
-                        <li class="flex items-center">
-                            <svg class="w-5 h-5 mr-2 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            Currency Management
-                        </li>
-                        <li class="flex items-center">
-                            <svg class="w-5 h-5 mr-2 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            Offshore Investment
-                        </li>
-                    </ul>
+    <!-- Features Section -->
+    <section class="section-padding bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 mx-auto text-center mb-5">
+                    <h2>Our Financial Services</h2>
+                    <p>Comprehensive solutions tailored to your unique financial needs</p>
                 </div>
             </div>
-            <div class="text-center mt-12">
-                <a href="#contact" class="inline-flex items-center bg-primary text-white px-8 py-3 rounded-lg hover:bg-primary-dark transition-colors">
-                    Get Started
-                    <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                    </svg>
-                </a>
-                <a href="services.html" class="inline-flex items-center bg-primary text-white px-8 py-3 rounded-lg hover:bg-primary-dark transition-colors">
-                    Service Details
-                    <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                    </svg>
-                </a>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="feature-box bg-white">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h4>Receive a portfolio health check in minutes</h4>
+                        <p>Share your CAS and receive customised analysis check to understand your financial standing.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="feature-box bg-white">
+                        <div class="feature-icon">
+                            <i class="fas fa-hand-holding-usd"></i>
+                        </div>
+                        <h4>Tailored wealth advisory</h4>
+                        <p>Get customized investment advisory and financial plan designed specifically for your goals.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Why Choose Us Section -->
-    <section class="py-16 section-gradient">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Our Reputation is Your Success</h2>
+    <section class="section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 mx-auto text-center mb-5">
+                    <h2>Why Choose Us</h2>
+                    <p>Our Reputation is your success</p>
+                </div>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="bg-white p-6 rounded-lg shadow-lg primary-shadow card-hover" data-aos="fade-up">
-                    <div class="text-primary mb-4">
-                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-                        </svg>
+            <div class="row">
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="feature-box bg-white h-100">
+                        <div class="feature-icon">
+                            <i class="fas fa-medal"></i>
+                        </div>
+                        <h4>Expertise You Can Trust</h4>
+                        <p>With years of experience in financial planning and investment advisory, our seasoned and certified advisors provide data-driven strategies tailored to your unique goals.</p>
                     </div>
-                    <h3 class="text-xl font-semibold mb-2">Expertise You Can Trust</h3>
-                    <p class="text-gray-600">With years of experience in financial planning and investment advisory, our seasoned and certified advisors provide data-driven strategies.</p>
                 </div>
-                <div class="bg-white p-6 rounded-lg shadow-lg primary-shadow card-hover" data-aos="fade-up" data-aos-delay="100">
-                    <div class="text-primary mb-4">
-                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
-                        </svg>
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="feature-box bg-white h-100">
+                        <div class="feature-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h4>Client Centric</h4>
+                        <p>We prioritize your financial goals above all else, following a client-first philosophy where we believe "Client is always and completely right". Your needs, aspirations, and success drive every decision we make.</p>
                     </div>
-                    <h3 class="text-xl font-semibold mb-2">Client Centric</h3>
-                    <p class="text-gray-600">We prioritize your financial goals above all else, following a <span class="font-bold">client-first philosophy</span> where we believe <span class="font-bold">"Client is always and completely right"</span>.</p>
                 </div>
-                <div class="bg-white p-6 rounded-lg shadow-lg primary-shadow card-hover" data-aos="fade-up" data-aos-delay="200">
-                    <div class="text-primary mb-4">
-                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
-                        </svg>
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="feature-box bg-white h-100">
+                        <div class="feature-icon">
+                            <i class="fas fa-balance-scale"></i>
+                        </div>
+                        <h4>Transparent & Ethical Advisory</h4>
+                        <p>Integrity is at the core of everything we do and is non-negotiable. We provide clear, unbiased, and transparent financial guidance, ensuring you make informed investment decisions with confidence.</p>
                     </div>
-                    <h3 class="text-xl font-semibold mb-2">Transparent & Ethical Advisory</h3>
-                    <p class="text-gray-600">Integrity is at the core of everything we do. We provide clear, unbiased guidance for informed investment decisions.</p>
                 </div>
-                <div class="bg-white p-6 rounded-lg shadow-lg primary-shadow card-hover" data-aos="fade-up" data-aos-delay="300">
-                    <div class="text-primary mb-4">
-                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
-                        </svg>
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="feature-box bg-white h-100">
+                        <div class="feature-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h4>Your Trusted Financial Partner</h4>
+                        <p>At FinMates, we go beyond investments—we build long-term relationships, guiding you through every stage of your financial journey.</p>
                     </div>
-                    <h3 class="text-xl font-semibold mb-2">Your Trusted Financial Partner</h3>
-                    <p class="text-gray-600">We go beyond investments—we build long-term relationships, guiding you through every stage of your financial journey.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Form Section -->
-    <section id="contact" class="py-16 bg-white">
-        <div class="container mx-auto px-6">
-            <div class="max-w-3xl mx-auto">
-                <h2 class="text-3xl font-bold text-center mb-8">Start Investing</h2>
-                <form id="contactForm" class="space-y-6">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                            <label class="block text-gray-700 mb-2">Full Name</label>
-                            <input type="text" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary transition-colors" required>
-                        </div>
-                        <div>
-                            <label class="block text-gray-700 mb-2">Mobile</label>
-                            <input type="tel" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary transition-colors" required>
-                        </div>
-                        <div>
-                            <label class="block text-gray-700 mb-2">Email</label>
-                            <input type="email" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary transition-colors" required>
-                        </div>
-                        <div>
-                            <label class="block text-gray-700 mb-2">Services</label>
-                            <select class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary transition-colors" required>
-                                <option value="">Select a Service</option>
-                                <option value="financial-planning">Financial Planning</option>
-                                <option value="investment-management">Investment Management</option>
-                                <option value="risk-assessment">Risk Assessment</option>
-                                <option value="portfolio-review">Portfolio Review</option>
-                            </select>
-                        </div>
+    <section id="contact" class="section-padding bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 mx-auto text-center mb-5">
+                    <h2>Start Your Investment Journey</h2>
+                    <p>Contact us today for a personalized financial consultation</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="contact-form bg-white">
+                        <form>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <input type="text" class="form-control" placeholder="Name" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <input type="tel" class="form-control" placeholder="Mobile" required>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <input type="email" class="form-control" placeholder="Email" required>
+                            </div>
+                            <div class="mb-3">
+                                <select class="form-select" required>
+                                    <option selected disabled>Services</option>
+                                    <option>Investment Advisory</option>
+                                    <option>Financial Planning</option>
+                                    <option>Portfolio Management</option>
+                                    <option>Retirement Planning</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <textarea class="form-control" rows="5" placeholder="Message"></textarea>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary">Start Investing</button>
+                            </div>
+                        </form>
                     </div>
-                    <div>
-                        <label class="block text-gray-700 mb-2">Message</label>
-                        <textarea class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary transition-colors" rows="4" required></textarea>
-                    </div>
-                    <button type="submit" class="w-full bg-primary text-white py-3 rounded-lg hover:bg-primary-dark transition-colors">
-                        Start Investing
-                    </button>
-                </form>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gradient-to-br from-primary-dark via-primary to-primary-light text-white py-12">
-        <div class="container mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div>
-                    <h3 class="text-xl font-bold mb-4">FINAMTES</h3>
-                    <p class="text-gray-400">Your trusted partner in financial growth and investment success.</p>
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h4>About FinMates</h4>
+                    <p>We are committed to empowering individuals, families, and businesses to achieve financial success and long-term security through expert financial guidance.</p>
                 </div>
-                <div>
-                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
-                    <ul class="space-y-2">
-                        <li><a href="#home" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
-                        <li><a href="#about" class="text-gray-400 hover:text-white transition-colors">About</a></li>
-                        <li><a href="#services" class="text-gray-400 hover:text-white transition-colors">Services</a></li>
-                        <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+                <div class="col-md-4 mb-4">
+                    <h4>Quick Links</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-decoration-none text-white">Home</a></li>
+                        <li><a href="about.html" class="text-decoration-none text-white">About Us</a></li>
+                        <li><a href="services.html" class="text-decoration-none text-white">Services</a></li>
+                        <li><a href="blog.html" class="text-decoration-none text-white">Blog</a></li>
+                        <li><a href="contact.html" class="text-decoration-none text-white">Contact</a></li>
                     </ul>
                 </div>
-                <div>
-                    <h3 class="text-xl font-bold mb-4">Services</h3>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Financial Planning</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Investment Management</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Risk Assessment</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Consultation</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-xl font-bold mb-4">Contact</h3>
-                    <ul class="space-y-2 text-gray-400">
-                        <li>123 Finance Street</li>
-                        <li>New York, NY 10001</li>
-                        <li>Phone: (555) 123-4567</li>
-                        <li>Email: info@finamtes.com</li>
+                <div class="col-md-4">
+                    <h4>Contact Us</h4>
+                    <ul class="list-unstyled footer-contact">
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Financial Street, City, Country</li>
+                        <li><i class="fas fa-phone"></i> +1 234 567 8901</li>
+                        <li><i class="fas fa-envelope"></i> info@finmates.com</li>
                     </ul>
                 </div>
             </div>
-            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
-                <p>&copy; 2024 Finamtes. All rights reserved.</p>
+            <div class="row copyright text-center">
+                <div class="col-md-12">
+                    <p>© 2024 FinMates. All Rights Reserved.</p>
+                </div>
             </div>
         </div>
     </footer>
 
-    <script>
-        // Initialize AOS
-        AOS.init({
-            duration: 1000,
-            once: true,
-            disable: 'mobile'
-        });
-
-        // Initialize Hero Swiper
-        const heroSwiper = new Swiper('.hero-swiper', {
-            effect: 'fade',
-            fadeEffect: {
-                crossFade: true
-            },
-            autoplay: {
-                delay: 5000,
-                disableOnInteraction: false,
-            },
-            loop: true,
-            speed: 1000,
-        });
-
-        // Mobile menu toggle with improved animation
-        const mobileMenuButton = document.getElementById('menuButton');
-        const mobileMenu = document.querySelector('.mobile-menu');
-        let isMenuOpen = false;
-
-        mobileMenuButton.addEventListener('click', () => {
-            isMenuOpen = !isMenuOpen;
-            mobileMenu.style.transform = isMenuOpen ? 'translateY(0)' : 'translateY(-100%)';
-            document.body.style.overflow = isMenuOpen ? 'hidden' : '';
-        });
-
-        // Close mobile menu when clicking a link
-        document.querySelectorAll('.mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                isMenuOpen = false;
-                mobileMenu.style.transform = 'translateY(-100%)';
-                document.body.style.overflow = '';
-            });
-        });
-
-        // Smooth scroll with offset for fixed header
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                const headerOffset = 100;
-                const elementPosition = target.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-        // Form submission with feedback
-        const contactForm = document.getElementById('contactForm');
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Add loading state
-            const submitButton = this.querySelector('button[type="submit"]');
-            const originalText = submitButton.textContent;
-            submitButton.textContent = 'Sending...';
-            submitButton.disabled = true;
-
-            // Simulate form submission
-            setTimeout(() => {
-                // Show success message
-                submitButton.textContent = 'Message Sent!';
-                submitButton.classList.remove('bg-primary');
-                submitButton.classList.add('bg-primary-dark');
-
-                // Reset form
-                this.reset();
-
-                // Reset button after 3 seconds
-                setTimeout(() => {
-                    submitButton.textContent = originalText;
-                    submitButton.classList.remove('bg-primary-dark');
-                    submitButton.classList.add('bg-primary');
-                    submitButton.disabled = false;
-                }, 3000);
-            }, 1500);
-        });
-
-        // Scroll to top button
-        const scrollToTop = document.createElement('button');
-        scrollToTop.innerHTML = '↑';
-        scrollToTop.className = 'fixed bottom-8 right-8 bg-primary text-white w-10 h-10 rounded-full shadow-lg hover:bg-primary-dark transition-colors hidden';
-        document.body.appendChild(scrollToTop);
-
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                scrollToTop.classList.remove('hidden');
-            } else {
-                scrollToTop.classList.add('hidden');
-            }
-        });
-
-        scrollToTop.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-    </script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

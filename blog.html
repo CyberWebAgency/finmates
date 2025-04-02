@@ -4,367 +4,476 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog - FinMates</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#5270aa',
-                        'primary-dark': '#445d96',
-                        'primary-light': '#7b93c3',
-                        'primary-ultralight': '#e6ebf4',
-                        'primary-bg': '#f5f7fa',
-                        'metallic-green': '#34d399',
-                        'metallic-green-dark': '#059669'
-                    }
-                }
-            }
-        }
-    </script>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-        
+        :root {
+            --primary-color: #5270aa;
+            --secondary-color: #3d3d3d;
+            --accent-color: #7b93c3;
+            --light-color: #e6ebf4;
+            --dark-color: #445d96;
+            --primary-bg: #f5f7fa;
+        }
         body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #e6ebf4 0%, #f5f7fa 100%);
+            font-family: 'Roboto', sans-serif;
+            color: var(--secondary-color);
         }
-
-        .glass-effect {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+        .top-bar {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 8px 0;
+            font-size: 14px;
         }
-
-        .metallic-gradient {
-            background: linear-gradient(135deg, #34d399 0%, #5270aa 100%);
+        .navbar {
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
         }
-
-        .hover-metallic:hover {
-            background: linear-gradient(135deg, #059669 0%, #445d96 100%);
-            transform: translateY(-2px);
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 28px;
+            color: var(--primary-color);
         }
-
-        .section-gradient {
-            background: linear-gradient(135deg, rgba(82, 112, 170, 0.03) 0%, rgba(82, 112, 170, 0.08) 100%);
-        }
-
-        .card-hover {
-            transition: all 0.3s ease;
-        }
-
-        .card-hover:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-
-        .text-gradient {
-            background: linear-gradient(135deg, #5270aa 0%, #7b93c3 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
         .nav-link {
-            position: relative;
-            padding: 0.5rem 0;
+            font-weight: 500;
+            color: var(--secondary-color);
+            margin: 0 10px;
         }
-
-        .nav-link::after {
-            content: '';
+        .nav-link:hover {
+            color: var(--primary-color);
+        }
+        .page-banner {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1460925895917-afdab827c52f');
+            background-size: cover;
+            background-position: center;
+            padding: 100px 0;
+            color: white;
+            margin-bottom: 50px;
+        }
+        .section-title {
+            margin-bottom: 50px;
+        }
+        .section-title h2 {
+            font-size: 36px;
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+        .section-title h2:after {
+            content: "";
             position: absolute;
             bottom: 0;
             left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(135deg, #5270aa 0%, #7b93c3 100%);
-            transition: width 0.3s ease;
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary-color);
         }
-
-        .nav-link:hover::after {
+        .section-padding {
+            padding: 80px 0;
+        }
+        .blog-card {
+            border-radius: 5px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+            height: 100%;
+            background-color: white;
+            overflow: hidden;
+        }
+        .blog-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+        .blog-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        .blog-img img {
             width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
         }
-
-        .primary-shadow {
-            box-shadow: 0 4px 14px -1px rgba(82, 112, 170, 0.2);
+        .blog-card:hover .blog-img img {
+            transform: scale(1.1);
         }
-
-        .blog-content h2 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: #1a202c;
+        .blog-content {
+            padding: 25px;
         }
-
-        .bg-primary-gradient {
-            background: linear-gradient(to bottom, #b5cefa, #d4f6eb);
+        .blog-date {
+            font-size: 14px;
+            color: var(--primary-color);
+            font-weight: 500;
+            margin-bottom: 10px;
+            display: block;
         }
-
-        .blog-content p {
-            margin-bottom: 1rem;
-            line-height: 1.7;
-            color: #4a5568;
+        .blog-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
         }
-
-        .blog-content ul {
-            list-style-type: disc;
-            margin-left: 1.5rem;
-            margin-bottom: 1rem;
+        .blog-desc {
+            margin-bottom: 20px;
+            color: #666;
         }
-
-        .blog-content li {
-            margin-bottom: 0.5rem;
-            color: #4a5568;
+        .blog-card .btn {
+            padding: 8px 20px;
+            font-weight: 500;
+        }
+        .blog-sidebar {
+            background-color: white;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+        .blog-sidebar h4 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        .blog-sidebar h4:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+        .category-list li, .recent-post-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .category-list li:last-child, .recent-post-list li:last-child {
+            border-bottom: none;
+        }
+        .category-list a, .recent-post-list a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .category-list a:hover, .recent-post-list a:hover {
+            color: var(--primary-color);
+            padding-left: 5px;
+        }
+        .category-list span {
+            float: right;
+            background-color: var(--light-color);
+            color: var(--secondary-color);
+            border-radius: 50px;
+            padding: 0 10px;
+            font-size: 12px;
+        }
+        .recent-post-list .post-date {
+            font-size: 12px;
+            color: #888;
+            display: block;
+        }
+        .footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        .footer-contact li {
+            margin-bottom: 15px;
+        }
+        .footer-contact i {
+            margin-right: 10px;
+            color: var(--accent-color);
+        }
+        .copyright {
+            padding: 20px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 40px;
+        }
+        .pagination .page-item .page-link {
+            color: var(--primary-color);
+        }
+        .pagination .page-item.active .page-link {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            color: white;
         }
     </style>
 </head>
-<body class="bg-primary-bg">
-    <!-- Navigation -->
-    <nav class="fixed w-full bg-white/95 backdrop-blur-md shadow-md z-50">
-        <div class="container mx-auto px-6 py-4">
-            <div class="flex items-center justify-between">
-                <div class="text-2xl font-bold text-primary">
-                    <img src="images/logo.png" alt="Finamtes" class="w-24 h-24 object-cover hover:scale-105 transition-transform">
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <i class="fas fa-envelope"></i> info@finmates.com
+                    <i class="fas fa-phone ms-3"></i> +1 234 567 8901
                 </div>
-                <div class="hidden md:flex space-x-8">
-                    <a href="index.html" class="nav-link text-gray-700 hover:text-primary transition-colors">Home</a>
-                    <a href="about.html" class="nav-link text-gray-700 hover:text-primary transition-colors">About</a>
-                    <a href="services.html" class="nav-link text-gray-700 hover:text-primary transition-colors">Services</a>
-                    <a href="blog.html" class="nav-link text-primary font-semibold">Blog</a>
-                    <a href="tools.html" class="nav-link text-gray-700 hover:text-primary transition-colors">Tools</a>
-                    <a href="contact.html" class="nav-link text-gray-700 hover:text-primary transition-colors">Contact</a>
+                <div class="col-md-6 text-end">
+                    <i class="fab fa-facebook-f"></i>
+                    <i class="fab fa-twitter ms-2"></i>
+                    <i class="fab fa-linkedin-in ms-2"></i>
+                    <i class="fab fa-instagram ms-2"></i>
                 </div>
-                <button id="menuButton" class="inline-flex items-center justify-center px-6 py-2 text-sm font-medium text-white metallic-gradient hover-metallic transition-all duration-300 rounded-lg md:hidden">
-                    Menu
-                    <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-                    </svg>
-                </button>
             </div>
         </div>
-        <!-- Mobile Menu -->
-        <div class="mobile-menu fixed top-0 left-0 w-full h-screen glass-effect md:hidden transform -translate-y-full transition-transform duration-300 ease-in-out z-50">
-            <div class="container mx-auto px-6 py-20">
-                <div class="flex flex-col space-y-6">
-                    <a href="index.html" class="text-xl text-gray-700 hover:text-primary transition-all hover:translate-x-2">Home</a>
-                    <a href="about.html" class="text-xl text-gray-700 hover:text-primary transition-all hover:translate-x-2">About</a>
-                    <a href="services.html" class="text-xl text-gray-700 hover:text-primary transition-all hover:translate-x-2">Services</a>
-                    <a href="blog.html" class="text-xl text-primary font-semibold transition-all hover:translate-x-2">Blog</a>
-                    <a href="tools.html" class="text-xl text-gray-700 hover:text-primary transition-all hover:translate-x-2">Tools</a>
-                    <a href="contact.html" class="text-xl text-gray-700 hover:text-primary transition-all hover:translate-x-2">Contact</a>
-                </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">FinMates</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">HOME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">ABOUT</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="services.html">SERVICE</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="blog.html">BLOG</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">CONTACT</a>
+                    </li>
+                </ul>
             </div>
         </div>
     </nav>
 
     <!-- Page Banner -->
-    <section class="relative pt-32 pb-12 md:pb-24 bg-gradient-to-br from-primary-dark via-primary to-primary-light">
-        <div class="container mx-auto px-6">
-            <div class="text-center">
-                <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Financial Insights</h1>
-                <p class="text-xl text-gray-200 mb-8">Stay informed with our latest articles and news</p>
-            </div>
-        </div>
-        <!-- Wave Shape Divider -->
-        <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
-            <svg class="relative block w-full h-24" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="fill-primary-bg"></path>
-            </svg>
-        </div>
-    </section>
-
-    <!-- Blog Posts -->
-    <section class="py-16 section-gradient">
-        <div class="container mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Blog Post 1 -->
-                <div class="glass-effect rounded-xl overflow-hidden card-hover primary-shadow" data-aos="fade-up">
-                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Investment Strategies" class="w-full h-64 object-cover">
-                    <div class="p-8">
-                        <div class="flex items-center mb-4">
-                            <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">Investment</span>
-                            <span class="text-gray-500 text-sm ml-4">March 15, 2024</span>
-                        </div>
-                        <h2 class="text-2xl font-bold mb-4">The Power of Diversification: Building a Resilient Investment Portfolio</h2>
-                        <p class="text-gray-600 mb-6">Learn why diversification is crucial for long-term investment success and how to create a well-balanced portfolio that can weather market volatility.</p>
-                        <div class="blog-content">
-                            <h2>Understanding Portfolio Diversification</h2>
-                            <p>Diversification is more than just spreading your investments across different assets. It's about creating a strategic balance that aligns with your financial goals and risk tolerance.</p>
-                            <ul>
-                                <li>Asset allocation strategies</li>
-                                <li>Risk management techniques</li>
-                                <li>Market correlation considerations</li>
-                                <li>Geographic diversification benefits</li>
-                            </ul>
-                            <p>By implementing a well-thought-out diversification strategy, investors can potentially reduce portfolio volatility while maintaining strong return potential.</p>
-                        </div>
-                        <a href="#" class="inline-block mt-6 text-primary hover:text-primary-dark font-semibold">Read More →</a>
-                    </div>
-                </div>
-
-                <!-- Blog Post 2 -->
-                <div class="glass-effect rounded-xl overflow-hidden card-hover primary-shadow" data-aos="fade-up" data-aos-delay="100">
-                    <img src="https://images.unsplash.com/photo-1434626881859-194d67b2b86f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Retirement Planning" class="w-full h-64 object-cover">
-                    <div class="p-8">
-                        <div class="flex items-center mb-4">
-                            <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">Planning</span>
-                            <span class="text-gray-500 text-sm ml-4">March 10, 2024</span>
-                        </div>
-                        <h2 class="text-2xl font-bold mb-4">Early Retirement Planning: Your Path to Financial Freedom</h2>
-                        <p class="text-gray-600 mb-6">Discover the essential steps and strategies for planning your retirement early, ensuring a comfortable and secure financial future.</p>
-                        <div class="blog-content">
-                            <h2>Starting Early Makes a Difference</h2>
-                            <p>The power of compound interest means that starting your retirement planning early can significantly impact your final nest egg. Learn how to make time work in your favor.</p>
-                            <ul>
-                                <li>Retirement account options</li>
-                                <li>Investment strategies for different age groups</li>
-                                <li>Tax-efficient saving methods</li>
-                                <li>Lifestyle planning considerations</li>
-                            </ul>
-                            <p>A well-planned retirement strategy can help you achieve your dreams of financial independence and security in your golden years.</p>
-                        </div>
-                        <a href="#" class="inline-block mt-6 text-primary hover:text-primary-dark font-semibold">Read More →</a>
-                    </div>
-                </div>
-
-                <!-- Blog Post 3 -->
-                <div class="glass-effect rounded-xl overflow-hidden card-hover primary-shadow" data-aos="fade-up">
-                    <img src="https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Digital Finance" class="w-full h-64 object-cover">
-                    <div class="p-8">
-                        <div class="flex items-center mb-4">
-                            <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">Technology</span>
-                            <span class="text-gray-500 text-sm ml-4">March 5, 2024</span>
-                        </div>
-                        <h2 class="text-2xl font-bold mb-4">Digital Finance: Navigating the Future of Money Management</h2>
-                        <p class="text-gray-600 mb-6">Explore how digital technologies are transforming personal finance and investment management in the modern era.</p>
-                        <div class="blog-content">
-                            <h2>The Digital Financial Revolution</h2>
-                            <p>Technology is reshaping how we manage, invest, and think about money. From mobile banking to robo-advisors, digital tools are making financial management more accessible and efficient.</p>
-                            <ul>
-                                <li>Digital banking innovations</li>
-                                <li>Cryptocurrency considerations</li>
-                                <li>Fintech security measures</li>
-                                <li>Mobile investment platforms</li>
-                            </ul>
-                            <p>Understanding and embracing digital financial tools can help you make better financial decisions and stay ahead in the modern economy.</p>
-                        </div>
-                        <a href="#" class="inline-block mt-6 text-primary hover:text-primary-dark font-semibold">Read More →</a>
-                    </div>
-                </div>
-
-                <!-- Blog Post 4 -->
-                <div class="glass-effect rounded-xl overflow-hidden card-hover primary-shadow" data-aos="fade-up" data-aos-delay="100">
-                    <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Financial Literacy" class="w-full h-64 object-cover">
-                    <div class="p-8">
-                        <div class="flex items-center mb-4">
-                            <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">Education</span>
-                            <span class="text-gray-500 text-sm ml-4">March 1, 2024</span>
-                        </div>
-                        <h2 class="text-2xl font-bold mb-4">Financial Literacy: Essential Skills for Modern Money Management</h2>
-                        <p class="text-gray-600 mb-6">Master the fundamental financial concepts and skills needed to make informed decisions about your money and investments.</p>
-                        <div class="blog-content">
-                            <h2>Building Financial Knowledge</h2>
-                            <p>Financial literacy is the foundation of sound money management and investment decision-making. Learn the key concepts that everyone should understand.</p>
-                            <ul>
-                                <li>Budgeting fundamentals</li>
-                                <li>Credit management</li>
-                                <li>Investment basics</li>
-                                <li>Risk assessment skills</li>
-                            </ul>
-                            <p>Developing strong financial literacy skills can help you make better decisions and achieve your financial goals more effectively.</p>
-                        </div>
-                        <a href="#" class="inline-block mt-6 text-primary hover:text-primary-dark font-semibold">Read More →</a>
-                    </div>
+    <div class="page-banner">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h1>Our Blog</h1>
+                    <p>Insights and expertise to help you make informed financial decisions</p>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- Newsletter Section -->
-    <section class="py-16 bg-white">
-        <div class="container mx-auto px-6">
-            <div class="max-w-3xl mx-auto glass-effect p-8 rounded-xl primary-shadow">
-                <h2 class="text-3xl font-bold text-center mb-6 text-gradient">Subscribe to Our Newsletter</h2>
-                <p class="text-gray-600 text-center mb-8">Stay updated with our latest insights and financial news</p>
-                <form class="flex flex-col md:flex-row gap-4">
-                    <input type="email" placeholder="Your email address" class="flex-1 px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary transition-all input-focus" required>
-                    <button type="submit" class="px-6 py-3 text-white metallic-gradient hover-metallic transition-all duration-300 rounded-lg">
-                        Subscribe
-                    </button>
-                </form>
+    <!-- Blog Section -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="row">
+                <!-- Blog Posts -->
+                <div class="col-lg-8">
+                    <div class="row">
+                        <!-- Blog Post 1 -->
+                        <div class="col-md-6 mb-4">
+                            <div class="blog-card h-100">
+                                <div class="blog-img">
+                                    <img src="https://images.unsplash.com/photo-1591696205602-2f950c417cb9" alt="Investment Strategies">
+                                </div>
+                                <div class="blog-content">
+                                    <span class="blog-date"><i class="far fa-calendar-alt me-2"></i>July 15, 2024</span>
+                                    <h3 class="blog-title">5 Investment Strategies for Uncertain Markets</h3>
+                                    <p class="blog-desc">Learn how to navigate volatile markets with these proven investment strategies that can help protect and grow your portfolio during economic uncertainty.</p>
+                                    <a href="#" class="btn btn-outline-primary">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Blog Post 2 -->
+                        <div class="col-md-6 mb-4">
+                            <div class="blog-card h-100">
+                                <div class="blog-img">
+                                    <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3" alt="Retirement Planning">
+                                </div>
+                                <div class="blog-content">
+                                    <span class="blog-date"><i class="far fa-calendar-alt me-2"></i>July 8, 2024</span>
+                                    <h3 class="blog-title">The Ultimate Guide to Retirement Planning in 2024</h3>
+                                    <p class="blog-desc">Discover the essential steps to create a comprehensive retirement plan that ensures financial security and peace of mind for your golden years.</p>
+                                    <a href="#" class="btn btn-outline-primary">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Blog Post 3 -->
+                        <div class="col-md-6 mb-4">
+                            <div class="blog-card h-100">
+                                <div class="blog-img">
+                                    <img src="https://images.unsplash.com/photo-1434626881859-194d67b2b86f" alt="Financial Education">
+                                </div>
+                                <div class="blog-content">
+                                    <span class="blog-date"><i class="far fa-calendar-alt me-2"></i>June 30, 2024</span>
+                                    <h3 class="blog-title">Teaching Your Children About Financial Literacy</h3>
+                                    <p class="blog-desc">Practical tips and approaches to instill sound financial habits in your children from an early age, setting them up for a lifetime of financial success.</p>
+                                    <a href="#" class="btn btn-outline-primary">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Blog Post 4 -->
+                        <div class="col-md-6 mb-4">
+                            <div class="blog-card h-100">
+                                <div class="blog-img">
+                                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f" alt="Tax Planning">
+                                </div>
+                                <div class="blog-content">
+                                    <span class="blog-date"><i class="far fa-calendar-alt me-2"></i>June 22, 2024</span>
+                                    <h3 class="blog-title">Smart Tax Planning Strategies to Minimize Your Tax Burden</h3>
+                                    <p class="blog-desc">Explore legal and effective tax planning techniques that can help you reduce your tax liability and keep more of your hard-earned money.</p>
+                                    <a href="#" class="btn btn-outline-primary">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Blog Post 5 -->
+                        <div class="col-md-6 mb-4">
+                            <div class="blog-card h-100">
+                                <div class="blog-img">
+                                    <img src="https://images.unsplash.com/photo-1559526324-593bc073d938" alt="Estate Planning">
+                                </div>
+                                <div class="blog-content">
+                                    <span class="blog-date"><i class="far fa-calendar-alt me-2"></i>June 15, 2024</span>
+                                    <h3 class="blog-title">Estate Planning Essentials: Protecting Your Legacy</h3>
+                                    <p class="blog-desc">Learn why estate planning is crucial for everyone, not just the wealthy, and how to ensure your assets are distributed according to your wishes.</p>
+                                    <a href="#" class="btn btn-outline-primary">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Blog Post 6 -->
+                        <div class="col-md-6 mb-4">
+                            <div class="blog-card h-100">
+                                <div class="blog-img">
+                                    <img src="https://images.unsplash.com/photo-1579621970795-87facc2f976d" alt="Market Trends">
+                                </div>
+                                <div class="blog-content">
+                                    <span class="blog-date"><i class="far fa-calendar-alt me-2"></i>June 8, 2024</span>
+                                    <h3 class="blog-title">Emerging Market Trends: Opportunities and Risks</h3>
+                                    <p class="blog-desc">A detailed analysis of current market trends and how investors can position themselves to capitalize on emerging opportunities while managing risks.</p>
+                                        <a href="#" class="btn btn-outline-primary">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Pagination -->
+                    <nav aria-label="Page navigation" class="mt-4">
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                            </li>
+                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">Next</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                
+                <!-- Sidebar -->
+                <div class="col-lg-4">
+                    <!-- Search Widget -->
+                    <div class="blog-sidebar">
+                        <h4>Search</h4>
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search for...">
+                            <button class="btn btn-primary" type="button">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Categories Widget -->
+                    <div class="blog-sidebar">
+                        <h4>Categories</h4>
+                        <ul class="list-unstyled category-list">
+                            <li><a href="#">Investment Strategies <span>8</span></a></li>
+                            <li><a href="#">Retirement Planning <span>12</span></a></li>
+                            <li><a href="#">Tax Planning <span>6</span></a></li>
+                            <li><a href="#">Estate Planning <span>4</span></a></li>
+                            <li><a href="#">Market Analysis <span>9</span></a></li>
+                            <li><a href="#">Financial Education <span>7</span></a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Recent Posts Widget -->
+                    <div class="blog-sidebar">
+                        <h4>Recent Posts</h4>
+                        <ul class="list-unstyled recent-post-list">
+                            <li>
+                                <a href="#">5 Investment Strategies for Uncertain Markets</a>
+                                <span class="post-date">July 15, 2024</span>
+                            </li>
+                            <li>
+                                <a href="#">The Ultimate Guide to Retirement Planning in 2024</a>
+                                <span class="post-date">July 8, 2024</span>
+                            </li>
+                            <li>
+                                <a href="#">Teaching Your Children About Financial Literacy</a>
+                                <span class="post-date">June 30, 2024</span>
+                            </li>
+                            <li>
+                                <a href="#">Smart Tax Planning Strategies to Minimize Your Tax Burden</a>
+                                <span class="post-date">June 22, 2024</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Subscribe Widget -->
+                    <div class="blog-sidebar">
+                        <h4>Subscribe to Our Newsletter</h4>
+                        <p>Get the latest financial insights delivered straight to your inbox.</p>
+                        <form>
+                            <div class="mb-3">
+                                <input type="email" class="form-control" placeholder="Your Email Address" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Subscribe</button>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gradient-to-br from-primary-dark via-primary to-primary-light text-white py-12">
-        <div class="container mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div>
-                    <h3 class="text-xl font-bold mb-4">FINAMTES</h3>
-                    <p class="text-gray-200">Your trusted partner in financial growth and investment success.</p>
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h4>About FinMates</h4>
+                    <p>We are committed to empowering individuals, families, and businesses to achieve financial success and long-term security through expert financial guidance.</p>
                 </div>
-                <div>
-                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
-                    <ul class="space-y-2">
-                        <li><a href="index.html" class="text-gray-200 hover:text-white transition-colors">Home</a></li>
-                        <li><a href="about.html" class="text-gray-200 hover:text-white transition-colors">About</a></li>
-                        <li><a href="services.html" class="text-gray-200 hover:text-white transition-colors">Services</a></li>
-                        <li><a href="contact.html" class="text-gray-200 hover:text-white transition-colors">Contact</a></li>
+                <div class="col-md-4 mb-4">
+                    <h4>Quick Links</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-decoration-none text-white">Home</a></li>
+                        <li><a href="about.html" class="text-decoration-none text-white">About Us</a></li>
+                        <li><a href="services.html" class="text-decoration-none text-white">Services</a></li>
+                        <li><a href="blog.html" class="text-decoration-none text-white">Blog</a></li>
+                        <li><a href="contact.html" class="text-decoration-none text-white">Contact</a></li>
                     </ul>
                 </div>
-                <div>
-                    <h3 class="text-xl font-bold mb-4">Services</h3>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-200 hover:text-white transition-colors">Financial Planning</a></li>
-                        <li><a href="#" class="text-gray-200 hover:text-white transition-colors">Investment Management</a></li>
-                        <li><a href="#" class="text-gray-200 hover:text-white transition-colors">Risk Assessment</a></li>
-                        <li><a href="#" class="text-gray-200 hover:text-white transition-colors">Consultation</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-xl font-bold mb-4">Contact</h3>
-                    <ul class="space-y-2 text-gray-200">
-                        <li>123 Finance Street</li>
-                        <li>New York, NY 10001</li>
-                        <li>Phone: (555) 123-4567</li>
-                        <li>Email: info@finamtes.com</li>
+                <div class="col-md-4">
+                    <h4>Contact Us</h4>
+                    <ul class="list-unstyled footer-contact">
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Financial Street, City, Country</li>
+                        <li><i class="fas fa-phone"></i> +1 234 567 8901</li>
+                        <li><i class="fas fa-envelope"></i> info@finmates.com</li>
                     </ul>
                 </div>
             </div>
-            <div class="border-t border-white/20 mt-12 pt-8 text-center text-gray-200">
-                <p>&copy; 2024 Finamtes. All rights reserved.</p>
+            <div class="row copyright text-center">
+                <div class="col-md-12">
+                    <p>© 2024 FinMates. All Rights Reserved.</p>
+                </div>
             </div>
         </div>
     </footer>
 
-    <script>
-        // Initialize AOS
-        AOS.init({
-            duration: 1000,
-            once: true,
-            offset: 100,
-            easing: 'ease-out-cubic'
-        });
-
-        // Mobile menu toggle
-        const mobileMenuButton = document.getElementById('menuButton');
-        const mobileMenu = document.querySelector('.mobile-menu');
-        
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('translate-y-0');
-            document.body.classList.toggle('overflow-hidden');
-            mobileMenuButton.classList.toggle('rotate-90');
-        });
-        
-        // Close mobile menu when clicking a link
-        document.querySelectorAll('.mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.remove('translate-y-0');
-                document.body.classList.remove('overflow-hidden');
-            });
-        });
-    </script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html> 
