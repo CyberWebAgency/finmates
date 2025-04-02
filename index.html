@@ -241,15 +241,19 @@
             transition: all 0.3s ease;
             max-height: 0;
             overflow: hidden;
+            background: rgba(255, 255, 255, 0.0);
+            /* backdrop-filter: blur(20px); */
+            -webkit-backdrop-filter: blur(20px);
         }
         
         #mobile-menu.open {
             max-height: 300px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
         }
         
         #mobile-menu a {
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-            padding-left: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1rem;
         }
         
         #mobile-menu a:last-child {
@@ -318,7 +322,9 @@
         /* Mobile header adjustments */
         @media (max-width: 768px) {
             nav {
-                background: rgba(255, 255, 255, 0.95) !important;
+                background: rgba(255, 255, 255, 0.85) !important;
+                backdrop-filter: blur(20px) !important;
+                -webkit-backdrop-filter: blur(20px) !important;
             }
         }
 
